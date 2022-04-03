@@ -18,7 +18,7 @@ export const MyPokemonTable = (props: IMyPokemonTable) => {
                   </td>
                   {myPokemon[i + 1] ?
                     <td style={{ textAlign: "center" }} onClick={() => { setShowModal(!showModal); onClick(myPokemon[i + 1]) }}>
-                      <img className={myPokemon[i]?.isShiny === true ? "shiny" : ""} alt="pokemon" src={myPokemon[i + 1]?.images} />
+                      <img className={myPokemon[i + 1]?.isShiny === true ? "shiny" : ""} alt="pokemon" src={myPokemon[i + 1]?.images} />
                       <span>
                         {myPokemon[i + 1]?.nickname || ""}
                       </span>
