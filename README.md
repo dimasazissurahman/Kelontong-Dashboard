@@ -12,3 +12,6 @@ Catch the pokemon is quite hard, be patience and catch your perfect shiny pokemo
 1. Please make sure run all dependency first with `npm run install`
 2. And Check file .env make sure the code inside file is like this -> `REACT_APP_API_URL=https://pokeapi.co/api/v2`
 3. For running this project just run `npm run start`
+
+
+## Author : DIMAS
