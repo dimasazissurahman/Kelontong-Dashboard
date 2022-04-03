@@ -1,0 +1,118 @@
+.buttonPrimary {
+  padding: 12px 24px;
+  color: #fff;
+  background-color: #00CFFF;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.buttonPrimary:hover {
+  background-color: #90e8fb;
+}
+
+.buttonPrimary:active {
+  background-color: #90e7fb36;
+  color: #90e8fb;
+}
+
+.buttonPrimary:disabled {
+  background-color: #ffe4cc;
+  cursor: inherit;
+}
+
+.buttonSecondary {
+  padding: 10px;
+  color: #00CFFF;
+  background-color: transparent;
+  border: 2px solid #00CFFF;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: fit-content;
+}
+
+.buttonSecondary:hover {
+  color: #fff;
+  border: 2px solid #00d0ffa9;
+  background-color: #00d0ffa9;
+}
+
+.buttonSecondary:active {
+  color: #fff;
+  border: 2px solid #00d0ff67;
+  background-color: #00d0ff67;
+}
+
+.buttonSecondary:disabled {
+  color: #ffe4cc;
+  border: 2px solid #ffe4cc;
+  background-color: transparent;
+  cursor: inherit;
+}
+
+.buttonSuccess {
+  padding: 12px 24px;
+  color: #fff;
+  background-color: #2BC155;
+  border: #2BC155;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  /* min-width: 20%; */
+}
+
+.buttonSuccess:hover {
+  background-color: #2bc1567d;
+}
+
+.buttonDanger {
+  padding: 12px 24px;
+  color: #fff;
+  background-color: #FF2E2E;
+  border: #FF2E2E;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 20%;
+}
+
+.buttonDanger:hover {
+  background-color: #ff2e2ea5;
+}
+
+.buttonDanger:active {
+  background-color: #ff2e2e5e;
+  color: #FF2E2E;
+}
+
+.buttonTertiary {
+  padding: 12px 24px;
+  color: #fff;
+  background-color: #FF009E;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.buttonTertiary:hover {
+  background-color: #ff009d6f;
+}
+
+.buttonTertiary:active {
+  background-color: #ff009d42;
+  color: #ff009d6f;
+}
+
+.buttonTertiary:disabled {
+  color: #cfccf9;
+  background-color: #f5f5fe;
+  cursor: inherit;
+}
