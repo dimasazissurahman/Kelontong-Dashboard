@@ -1,12 +1,6 @@
 import { combineReducers } from "redux";
-// import authReducer from "./auth";
-// import userReducer from "./user";
-// import roleReducer from "./role";
-// import reconcileHeader from "./reconcile";
+import productReducer from "./product";
 
 export default combineReducers({
-  // auth: authReducer,
-  // user: userReducer,
-  // role: roleReducer,
-  // reconcile: reconcileHeader,
+  product: productReducer,
 });

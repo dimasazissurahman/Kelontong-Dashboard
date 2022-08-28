@@ -3,16 +3,21 @@ import { Button, Card } from 'components';
 import React, { useEffect, useState } from 'react'
 import { Form, Modal } from 'react-bootstrap';
 import DataTable from 'react-data-table-component';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { columnProduct, getProduct, postProduct } from 'shared';
+import { columnProduct } from 'shared';
 import { objCategory, objData } from 'shared/api/mock-data';
+import { clearStatus, getProduct, getProductList, postProduct } from 'store/entities/product';
 
 const ProductListPage = () => {
+  const { listProduct } = useSelector(getProductList);
   const [data, setData] = useState<any>(objData);
   const [show, setShow] = useState<any>(false);
   const [value, setValue] = useState<any>({});
   const [isSubmit, setIsSubmit] = useState<any>(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const addAction = {
     name: "Action",
     cell: (row: any) => (
@@ -26,15 +31,16 @@ const ProductListPage = () => {
   let tempColumn = [addAction, ...columnProduct];
 
   const fetchProduct = async () => {
-    const res = await getProduct();
-    setData([...res?.data, ...objData]);
+    dispatch(getProduct());
+    // const res = await getProduct();
+    setData([...listProduct, ...objData]);
     setIsSubmit(false);
   }
 
   useEffect(() => {
     fetchProduct();
     localStorage.setItem("P-DATA", btoa(JSON.stringify(data)));
-  }, [isSubmit]);
+  }, [isSubmit, listProduct]);
 
   const handleClick = (data: any) => {
     localStorage.setItem("S-DATA", btoa(JSON.stringify(data)));
@@ -48,6 +54,7 @@ const ProductListPage = () => {
   }
 
   const handleSubmit = async (e: any) => {
+    dispatch(clearStatus());
     setIsSubmit(true);
     e.preventDefault();
     e.persist()
@@ -58,8 +65,7 @@ const ProductListPage = () => {
       ...value,
       categoryName
     }
-    const res = await postProduct(obj);
-    console.log(res);
+    dispatch(postProduct(obj));
     setShow(!show);
   }
 

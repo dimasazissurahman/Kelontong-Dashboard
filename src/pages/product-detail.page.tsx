@@ -1,21 +1,8 @@
-import { BackIcon, Button, Card, ModalFormComponent } from 'components';
-import { TodoContext } from 'context/context'
-import React, { Key, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { Modal } from 'react-bootstrap';
-import { useNavigate } from 'react-router';
-import { api, listOfMoves, randomProperty } from 'shared';
+import { BackIcon, Card } from 'components';
+import React, { Key, useEffect, useMemo, useState } from 'react'
 
 const ProductDetailPage = () => {
-  const { todos, setTodos } = useContext(TodoContext);
-  const [url, setUrl] = useState("");
   const [data, setData] = useState<any>({});
-  const [imagesProduct, setImagesProduct] = useState<any>({});
-  const [showMoveList, setShowMoveList] = useState(false);
-  const [isShiny, setIsShiny] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [showModalInput, setShowModalInput] = useState(false);
-  const [nickname, setNickname] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const data: any = localStorage.getItem("S-DATA");
@@ -24,16 +11,15 @@ const ProductDetailPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const tableContent = useMemo(() => (
     [
       {
         label: "Id",
-        value: data?.id,
+        value: data?._id,
       },
       {
         label: "Name",
-        value: data?.name
+        value: data?.f_name
       },
       {
         label: "Category Id",
@@ -75,58 +61,8 @@ const ProductDetailPage = () => {
         label: "Harga",
         value: data?.harga
       },
-      // {
-      //   label: "Moves",
-      //   value: <>
-      //     <Button mode="tertiary" onClick={() => setShowMoveList(!showMoveList)}>{showMoveList ? "Hide" : "Show"}</Button>
-      //     <div className="p-2">
-      //       {showMoveList ?
-      //         listOfMoves(data)
-      //         : ""
-      //       }
-      //     </div>
-      //   </>
-      // }
     ]
-  ), [data, showMoveList]);
-
-  const handleCatch = useCallback(() => {
-    const randomProduct = randomProperty(data?.sprites);
-    if (typeof randomProduct === "string") {
-      if (randomProduct.includes("shiny")) {
-        setIsShiny(true);
-        setImagesProduct(randomProduct);
-        setShowModal(!showModal);
-      }
-      else {
-        setIsShiny(false);
-        setImagesProduct(randomProduct);
-        setShowModal(!showModal);
-      }
-    } else {
-      setImagesProduct("");
-      setShowModal(!showModal);
-    }
-  }, [data?.sprites, showModal]);
-
-  const handleSubmit = async () => {
-    const body = {
-      id: Date.now(),
-      nickname: nickname,
-      name: data?.name,
-      images: imagesProduct,
-      types: data?.types,
-      moves: data?.moves,
-      isShiny,
-      url
-    }
-    const newData = {
-      myProduct: [...todos?.myProduct, body]
-    }
-    setTodos(newData);
-    localStorage.setItem("MY-P", btoa(JSON.stringify(newData)));
-    navigate("/my-Product-list");
-  }
+  ), [data]);
 
   return (
     <>
@@ -150,18 +86,6 @@ const ProductDetailPage = () => {
           :
           ""}
       </Card>
-
-      <ModalFormComponent
-        show={showModal}
-        title={"Gotchaa !!"}
-        onHide={() => setShowModal(!showModal)}
-      >
-        <Modal.Body>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button type="button" onClick={() => setShowModal(!showModal)} mode={"danger"}>{imagesProduct === "" ? "Try Again" : "Cancel"}</Button>
-        </Modal.Footer>
-      </ModalFormComponent>
     </>
   )
 }
