@@ -1,26 +1,26 @@
-import { IMyPokemonTable } from "shared";
+import { IMyProductTable } from "shared";
 
 
-export const MyPokemonTable = (props: IMyPokemonTable) => {
-  const { myPokemon, onClick, showModal, setShowModal } = props;
+export const MyProductTable = (props: IMyProductTable) => {
+  const { myProduct, onClick, showModal, setShowModal } = props;
   return (
     <table>
       <tbody style={{ columns: "2 auto" }}>
-        {myPokemon.map((el: any, i: number) => {
+        {myProduct.map((el: any, i: number) => {
           return (
             <tr key={i}>
               {i % 2 === 0
                 &&
                 <>
-                  <td style={{ textAlign: "center" }} onClick={() => { setShowModal(!showModal); onClick(myPokemon[i]) }}>
-                    <img className={myPokemon[i]?.isShiny === true ? "shiny" : ""} alt="pokemon" src={myPokemon[i]?.images} />
-                    {myPokemon[i]?.nickname || ""}
+                  <td style={{ textAlign: "center" }} onClick={() => { setShowModal(!showModal); onClick(myProduct[i]) }}>
+                    <img className={myProduct[i]?.isShiny === true ? "shiny" : ""} alt="Product" src={myProduct[i]?.images} />
+                    {myProduct[i]?.nickname || ""}
                   </td>
-                  {myPokemon[i + 1] ?
-                    <td style={{ textAlign: "center" }} onClick={() => { setShowModal(!showModal); onClick(myPokemon[i + 1]) }}>
-                      <img className={myPokemon[i + 1]?.isShiny === true ? "shiny" : ""} alt="pokemon" src={myPokemon[i + 1]?.images} />
+                  {myProduct[i + 1] ?
+                    <td style={{ textAlign: "center" }} onClick={() => { setShowModal(!showModal); onClick(myProduct[i + 1]) }}>
+                      <img className={myProduct[i + 1]?.isShiny === true ? "shiny" : ""} alt="Product" src={myProduct[i + 1]?.images} />
                       <span>
-                        {myPokemon[i + 1]?.nickname || ""}
+                        {myProduct[i + 1]?.nickname || ""}
                       </span>
                     </td>
                     :

@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import MainRouter from 'routers';
-import { TodoProvider } from 'context/context';
+import { Provider } from 'react-redux';
+import { configureAppStore } from 'store/configureStore';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const store = configureAppStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <TodoProvider>
+    <Provider store={store}>
       <MainRouter />
-    </TodoProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

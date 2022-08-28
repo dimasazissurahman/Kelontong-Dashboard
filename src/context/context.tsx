@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
 
 export interface ITodo {
-    myPokemon?: [] | any;
+    myProduct?: [] | any;
 }
 
 const useValue = () => {
-    const [todos, setTodos] = React.useState<ITodo>({ myPokemon: [] })
+    const [todos, setTodos] = React.useState<ITodo>({ myProduct: [] })
 
     useEffect(() => {
         const data: any = localStorage.getItem("MY-P");
         const generate = data ? JSON.parse(atob(data)) : "";
-        const { myPokemon } = generate;
-        setTodos({ myPokemon: myPokemon ? myPokemon : [] });
+        const { myProduct } = generate;
+        setTodos({ myProduct: myProduct ? myProduct : [] });
     }, [])
 
     return {

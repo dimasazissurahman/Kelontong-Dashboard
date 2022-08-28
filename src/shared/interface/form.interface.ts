@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
-export interface IMyPokemonTable {
-  myPokemon: any;
+export interface IMyProductTable {
+  myProduct: any;
   onClick: (data: any) => void;
   showModal: boolean;
   setShowModal: any;

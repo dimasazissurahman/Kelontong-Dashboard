@@ -8,3 +8,21 @@ export const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const postProduct = async (data: any) => {
+  try {
+    const res = await api.post(`${url}/product`, data);
+    return res;
+  } catch (error: any) {
+    return error.response;
+  }
+}
+
+export const getProduct = async () => {
+  try {
+    const res = await api.get(`${url}/product`);
+    return res;
+  } catch (error: any) {
+    return error.response;
+  }
+}

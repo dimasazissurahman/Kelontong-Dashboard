@@ -13,9 +13,10 @@ export const HeaderComponent = () => {
           </Link>
         </div>
         <div className={styles['header-right']}>
-          <Link to="/my-pokemon-list">
-            <Button>My Pokemon</Button>
-          </Link>
+          {/* <Link to="/my-Product-list">
+            <Button>My Product</Button>
+          </Link> */}
+          <h5>Hi, Admin</h5>
         </div>
       </div>
     </header>
